@@ -49,7 +49,13 @@ services:
     volumes:
       - ./assets/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
     restart: always
+    networks:
+      - app-network  #using the shared network
 
 volumes:
   clickhouse-data:
   openlit-data:
+
+networks:
+  app-network:
+    external: true   # Reference the shared external network
